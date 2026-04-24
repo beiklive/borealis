@@ -36,6 +36,46 @@ Check our wiki for more information:
 
 Or you can start a new project from the [template](https://github.com/xfangfang/borealis_template)
 
+## build
+
+### windows(gl)
+
+```bash
+cmake -B build -G Ninja  \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DPLATFORM_DESKTOP=ON \
+    -DWIN32_TERMINAL=OFF \
+    -DUSE_LIBROMFS=ON \
+    -DZLIB_USE_STATIC_LIBS=ON
+cmake --build build
+```
+
+### linux(gles2)
+
+```bash
+cmake -B build -DCMAKE_BUILD_TYPE=Release -DUSE_GLES2=ON \
+      -DPLATFORM_DESKTOP=ON \
+      -DUSE_LIBROMFS=ON
+make -C build -j$(nproc)
+```
+### switch(glfw)
+
+```bash
+cmake -B build -DCMAKE_BUILD_TYPE=Release -DPLATFORM_SWITCH=ON -DUSE_GLFW=ON
+make -C build borealis_demo.nro -j$(nproc)
+```
+
+
+### macOS(glfw)
+
+```bash
+cmake -B build -DCMAKE_BUILD_TYPE=Release -DPLATFORM_DESKTOP=ON -DBUNDLE_MACOS_APP=ON -DUSE_GLFW=ON
+make -C build -j$(sysctl -n hw.ncpu)
+```
+
+
+
+
 
 ### Made with borealis (Alphabetical order)
 
